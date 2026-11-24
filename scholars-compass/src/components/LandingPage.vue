@@ -183,7 +183,7 @@ function handleSearch() {
 }
 
 .cta-button {
-  background-color: #53586e;
+  background-color: #ffb300;
   color: #ffffff;
   border: none;
   border-radius: 999px;
@@ -195,7 +195,7 @@ function handleSearch() {
 }
 
 .cta-button:hover {
-  background-color: #3f4457;
+  background-color: #db930d;
 }
 
 .cta-button:active {
