@@ -1,45 +1,140 @@
 <script setup>
 import { ref } from 'vue'
+import logoUrl from './assets/LOGO.jpg'
 import LandingPage from './components/LandingPage.vue'
+import SurveySect from './components/SurveySect.vue'
+import AboutSect from './components/AboutSect.vue'
 
 const surveySection = ref(null)
+const searchQuery = ref('')
 
 function scrollToSurvey() {
-  surveySection.value?.scrollIntoView({ behavior: 'smooth' })
+  surveySection.value?.$el?.scrollIntoView({ behavior: 'smooth' })
+}
+
+function handleSearch() {
+  if (!searchQuery.value.trim()) return
+  alert(`Search preview: "${searchQuery.value}" (We will connect this to college data later!)`)
 }
 </script>
 
 <template>
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo-circle">
+        <img class="logo-image" :src="logoUrl" alt="Scholar Compass logo" />
+      </div>
+      <a href="#login" class="login-link">Log in</a>
+    </div>
+
+    <form class="search-form" @submit.prevent="handleSearch">
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search"
+        aria-label="Search colleges"
+      />
+    </form>
+
+    <nav class="nav-right">
+      <a href="#home">Home</a>
+      <a href="#survey" @click.prevent="scrollToSurvey">Survey</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
   <main>
     <LandingPage @start-survey="scrollToSurvey" />
-
-    <section ref="surveySection" class="survey-placeholder">
-      <h2>Preference Survey (Next Milestone)</h2>
-      <p>
-        This section will hold the college preference questions that filter matching schools
-        and open the map + college list view.
-      </p>
-    </section>
+    <SurveySect ref="surveySection" />
+    <AboutSect />
   </main>
 </template>
 
 <style scoped>
-.survey-placeholder {
-  max-width: 1040px;
-  margin: 24px auto 0;
-  padding: 36px 24px;
-  border-top: 2px dashed #cbd5e1;
-  color: #475569;
-  font-family: system-ui, -apple-system, sans-serif;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 28px;
+  background-color: #464d6b;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
-.survey-placeholder h2 {
-  margin: 0 0 8px;
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #163366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.login-link,
+.nav-right a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.login-link:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+}
+
+.search-form {
+  flex: 1;
+  max-width: 460px;
+}
+
+.search-form input {
+  width: 100%;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background-color: #d6d9de;
   color: #1e293b;
-  font-size: 1.3rem;
+  font-size: 0.95rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  outline: none;
 }
 
-.survey-placeholder p {
-  margin: 0;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 14px 16px;
+  }
+
+  .search-form {
+    order: 3;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
 }
 </style>
