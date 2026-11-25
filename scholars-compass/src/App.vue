@@ -81,7 +81,7 @@ function handleSearch() {
   align-items: center;
   gap: clamp(24px, 4vw, 56px);
   padding: 40px clamp(24px, 5vw, 72px);
-  background-color: #8fa1b5;
+  background-color: #8b9ab1;
 }
 
 .hero-map-layout > * {

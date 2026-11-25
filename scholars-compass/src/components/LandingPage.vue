@@ -30,7 +30,7 @@ const emit = defineEmits(['start-survey'])
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #8fa1b5;
+  background-color: #8b9ab1;
   color: #ffffff;
   font-family: Georgia, 'Times New Roman', serif;
 }
@@ -68,6 +68,7 @@ const emit = defineEmits(['start-survey'])
   font-size: 1.05rem;
   line-height: 1.65;
   margin: 0 0 36px;
+  text-align: justify;
 }
 
 .cta-button {
