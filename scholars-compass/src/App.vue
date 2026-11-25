@@ -1,20 +1,36 @@
 <script setup>
 import { ref } from 'vue'
+import collegesData from './data/Colleges.json'
 import logoUrl from './assets/LOGO.jpg'
 import LandingPage from './components/LandingPage.vue'
+import MapSect from './components/MapSect.vue'
 import SurveySect from './components/SurveySect.vue'
 import AboutSect from './components/AboutSect.vue'
 
-const surveySection = ref(null)
+const colleges = collegesData
+const selectedCollege = ref(null)
 const searchQuery = ref('')
 
 function scrollToSurvey() {
-  surveySection.value?.$el?.scrollIntoView({ behavior: 'smooth' })
+  document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' })
+}
+
+function handleSelectCollege(college) {
+  selectedCollege.value = college
 }
 
 function handleSearch() {
-  if (!searchQuery.value.trim()) return
-  alert(`Search preview: "${searchQuery.value}" (We will connect this to college data later!)`)
+  const query = searchQuery.value.trim().toLowerCase()
+  if (!query) return
+
+  const match = colleges.find((college) => college.name.toLowerCase().includes(query))
+  if (!match) {
+    alert(`No matching pin yet for "${searchQuery.value}".`)
+    return
+  }
+
+  handleSelectCollege(match)
+  document.getElementById('map-section')?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
@@ -44,13 +60,34 @@ function handleSearch() {
   </header>
 
   <main>
-    <LandingPage @start-survey="scrollToSurvey" />
-    <SurveySect ref="surveySection" />
+    <div class="hero-map-layout">
+      <LandingPage @start-survey="scrollToSurvey" />
+      <MapSect
+        :colleges="colleges"
+        :selected-college="selectedCollege"
+        @select-college="handleSelectCollege"
+      />
+    </div>
+    <SurveySect />
     <AboutSect />
   </main>
 </template>
 
 <style scoped>
+.hero-map-layout {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  padding: 40px clamp(24px, 5vw, 72px);
+  background-color: #8fa1b5;
+}
+
+.hero-map-layout > * {
+  min-width: 0;
+}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -135,6 +172,13 @@ function handleSearch() {
     order: 3;
     max-width: 100%;
     flex-basis: 100%;
+  }
+
+  .hero-map-layout {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 20px 48px;
   }
 }
 </style>

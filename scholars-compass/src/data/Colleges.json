@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "University of the Philippines Los Baños",
+    "lat": 14.1675,
+    "lng": 121.2436
+  },
+  {
+    "id": 2,
+    "name": "De La Salle University",
+    "lat": 14.5648,
+    "lng": 120.9932
+  },
+  {
+    "id": 3,
+    "name": "Ateneo de Manila University",
+    "lat": 14.6398,
+    "lng": 121.0782
+  }
+]

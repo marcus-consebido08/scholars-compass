@@ -27,7 +27,7 @@ const emit = defineEmits(['start-survey'])
 <style scoped>
 /* Base Page Container */
 .page-wrapper {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #8fa1b5;
@@ -38,14 +38,15 @@ const emit = defineEmits(['start-survey'])
 /* ==================== HERO STYLES ==================== */
 .hero {
   flex: 1;
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 72px 24px 80px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0;
+  padding: 32px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 }
 
 .title {
