@@ -16,5 +16,59 @@
     "name": "Ateneo de Manila University",
     "lat": 14.6398,
     "lng": 121.0782
+  },
+  {
+    "id": 4,
+    "name": "University of Santo Tomas",
+    "lat": 14.6010,
+    "lng": 121.0500
+  },
+  {
+    "id": 5,
+    "name": "University of the Philippines Diliman",
+    "lat": 14.6570,
+    "lng": 121.0500
+  },
+  {
+    "id": 6,
+    "name": "Mapúa University",
+    "lat": 14.5833,
+    "lng": 121.0500
+  },
+  {
+    "id": 7,
+    "name": "Far Eastern University",
+    "lat": 14.5833,
+    "lng": 121.0500
+  },
+  {
+    "id": 8,
+    "name": "Batangas State University",
+    "lat": 13.7563,
+    "lng": 121.0583
+  },
+  {
+    "id": 9,
+    "name": "First Asia Institute of Technology and Humanities",
+    "lat": 14.0774,
+    "lng": 121.1493
+  },
+  {
+    "id": 10,
+    "name": "Polytechnic University of the Philippines Sto. Tomas",
+    "lat": 14.1084,
+    "lng": 121.1436
+  },
+  {
+    "id": 11,
+    "name": "Batangas State University Lipa",
+    "lat": 13.9419,
+    "lng": 121.1644
+  },
+  {
+    "id": 12,
+    "name": "De La Salle Lipa",
+    "lat": 13.9429,
+    "lng": 121.1474
   }
 ]

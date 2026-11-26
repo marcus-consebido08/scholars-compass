@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import collegesData from './data/Colleges.json'
-import logoUrl from './assets/LOGO.jpg'
+import logoUrl from './assets/LogoTr.png'
 import LandingPage from './components/LandingPage.vue'
 import MapSect from './components/MapSect.vue'
 import SurveySect from './components/SurveySect.vue'
@@ -111,7 +111,7 @@ function handleSearch() {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background-color: #163366;
+  background-color: #464d6b;
   display: flex;
   align-items: center;
   justify-content: center;
